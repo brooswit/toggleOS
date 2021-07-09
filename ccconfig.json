@@ -1,0 +1,32 @@
+{
+    "startup": "main.lua",
+    "dependencies": [
+        {
+            "source":  "github",
+            "account": "brooswit",
+            "repo":    "ccc-common",
+            "branch":  "master",
+            "path":    "",
+            "filename": "prompt",
+            "filetype": "lua"
+        },
+        {
+            "source":  "github",
+            "account": "brooswit",
+            "repo":    "ccc-common",
+            "branch":  "master",
+            "path":    "",
+            "filename": "configManager",
+            "filetype": "json"
+        },
+        {
+            "source":  "github",
+            "account": "brooswit",
+            "repo":    "ccc-launchdarkly",
+            "branch":  "master",
+            "path":    "",
+            "filename": "ccconfig",
+            "filetype": "json"
+        }
+    ]
+}
