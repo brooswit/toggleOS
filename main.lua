@@ -24,7 +24,7 @@ local function reidentify()
 end
 
 local state = "main"
-while true
+while true do
     local ldVariation = nil
     if isLDSDKConfigured() then
         ldVariation = ldClient.variation( config.flagKey )
