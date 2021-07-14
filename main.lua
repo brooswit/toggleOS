@@ -69,9 +69,9 @@ while true do
         print( "1 ) Configure LaunchDarkly" )
         print( "2 ) Configure Interfaces" )
         print( "--------------------------------------------------------------------------------" )
-        if choice = 1 then
+        if choice == 1 then
             state = "config_ld"
-        else if choice = 2 then
+        else if choice == 2 then
             state = "config_faces"
         else if choice ~= nil then
             print( "INVALID INPUT: " .. choice)
@@ -90,15 +90,15 @@ while true do
         print( "7 ) Change flag targeting" )
         print( "--------------------------------------------------------------------------------" )
         print( "0 ) Go back" )
-        if choice = 1 then
+        if choice == 1 then
             promptFor("client_side_id")
-        else if choice = 2 then
+        else if choice == 2 then
             promptFor("api_key")
-        else if choice = 3 then
+        else if choice == 3 then
             promptFor("flag_key")
-        else if choice = 4 then
+        else if choice == 4 then
             promptFor("user_key")
-        else if choice = 0 then
+        else if choice == 0 then
             state = "main"
         else if choice ~= nil then
             print( "INVALID INPUT: " .. choice)
@@ -117,7 +117,7 @@ while true do
         print( "7 ) Default - (STATUS)" )
         print( "--------------------------------------------------------------------------------" )
         print( "0 ) Go back" )
-        if choice = 0 then
+        if choice == 0 then
             state = "main"
         else if choice ~= nil then
             print( "INVALID INPUT: " .. choice)
@@ -140,7 +140,7 @@ while true do
         print( "9 ) Input  - redstone count  (Include redstone signal in user attributes)" )
         print( "--------------------------------------------------------------------------------" )
         print( "0 ) Go back" )
-        if choice = 0 then
+        if choice == 0 then
             state = "main"
         else if choice ~= nil then
             print( "INVALID INPUT: " .. choice)
