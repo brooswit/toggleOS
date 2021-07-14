@@ -33,23 +33,23 @@ while true do
     local choice = nil
     local event, key = os.pullEvent( "key_up" )
     if key == keys.one then choice = 1
-    else if key == keys.two then
+    elseif key == keys.two then
         choice = 2
-    else if key == keys.three then
+    elseif key == keys.three then
         choice = 3
-    else if key == keys.four then
+    elseif key == keys.four then
         choice = 4
-    else if key == keys.five then
+    elseif key == keys.five then
         choice = 5
-    else if key == keys.six then
+    elseif key == keys.six then
         choice = 6
-    else if key == keys.seven then
+    elseif key == keys.seven then
         choice = 7
-    else if key == keys.eight then
+    elseif key == keys.eight then
         choice = 8
-    else if key == keys.nine then
+    elseif key == keys.nine then
         choice = 9
-    else if key == keys.zero then
+    elseif key == keys.zero then
         choice = 0
     end
 
@@ -71,14 +71,14 @@ while true do
         print( "--------------------------------------------------------------------------------" )
         if choice == 1 then
             state = "config_ld"
-        else if choice == 2 then
+        elseif choice == 2 then
             state = "config_faces"
-        else if choice ~= nil then
+        elseif choice ~= nil then
             print( "INVALID INPUT: " .. choice)
         end
 
 
-    else if state == "config_ld" then
+    elseif state == "config_ld" then
         print( "--                           Configure LaunchDarkly                           --" )
         print( "--------------------------------------------------------------------------------" )
         print( "1 ) Change client-side ID" )
@@ -92,20 +92,20 @@ while true do
         print( "0 ) Go back" )
         if choice == 1 then
             promptFor("client_side_id")
-        else if choice == 2 then
+        elseif choice == 2 then
             promptFor("api_key")
-        else if choice == 3 then
+        elseif choice == 3 then
             promptFor("flag_key")
-        else if choice == 4 then
+        elseif choice == 4 then
             promptFor("user_key")
-        else if choice == 0 then
+        elseif choice == 0 then
             state = "main"
-        else if choice ~= nil then
+        elseif choice ~= nil then
             print( "INVALID INPUT: " .. choice)
         end
 
 
-    else if state == "config_faces" then
+    elseif state == "config_faces" then
         print( "--                            Configure Interfaces                            --" )
         print( "--------------------------------------------------------------------------------" )
         print( "1 ) Front   - (STATUS)" )
@@ -119,12 +119,12 @@ while true do
         print( "0 ) Go back" )
         if choice == 0 then
             state = "main"
-        else if choice ~= nil then
+        elseif choice ~= nil then
             print( "INVALID INPUT: " .. choice)
         end
 
 
-    else if state == "config_face" then
+    elseif state == "config_face" then
         print( "--                            Configure Interface                             --" )
         print( "--------------------------------------------------------------------------------" )
         print( "Side (SIDE) is currently configured to (STATUS).")
@@ -142,7 +142,7 @@ while true do
         print( "0 ) Go back" )
         if choice == 0 then
             state = "main"
-        else if choice ~= nil then
+        elseif choice ~= nil then
             print( "INVALID INPUT: " .. choice)
         end
 
