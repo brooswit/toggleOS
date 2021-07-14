@@ -1,6 +1,6 @@
-os.loadAPI( 'prompt' )
-os.loadAPI( 'configManager' )
-os.loadAPI( 'launchDarkly' )
+os.loadAPI( 'prompt.lua' )
+os.loadAPI( 'configManager.lua' )
+os.loadAPI( 'LDClient.lua' )
 
 local config = configManager.load( "toggleOS" )
 -- config.clientSideID = config.clientSideID || prompt( "Enter client-side ID" )
