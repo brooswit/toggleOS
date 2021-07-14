@@ -27,6 +27,15 @@
             "path":    "",
             "filename": "ccconfig",
             "filetype": "json"
+        },
+        {
+            "source":  "github",
+            "account": "brooswit",
+            "repo":    "toggleOS",
+            "branch":  "main",
+            "path":    "",
+            "filename": "main",
+            "filetype": "lua"
         }
     ]
 }
