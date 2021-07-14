@@ -11,14 +11,14 @@ configManager.save( "toggleOS", config )
 
 local ldClient = nil
 local function reinit()
-    if ldClient != nil then
+    if ldClient ~= nil then
         ldClient.close()
     end
     ldClient = launchDarkly.init( config.clientSideID, { key = config.userKey } )
 end
 
 local function reidentify()
-    if ldClient != nil then
+    if ldClient ~= nil then
         ldClient.identify( { key = config.userKey } )
     end
 end
@@ -73,7 +73,7 @@ while true
             state = "config_ld"
         else if choice = 2 then
             state = "config_faces"
-        else if choice != nil then
+        else if choice ~= nil then
             print( "INVALID INPUT: " .. choice)
         end
 
@@ -100,7 +100,7 @@ while true
             promptFor("user_key")
         else if choice = 0 then
             state = "main"
-        else if choice != nil then
+        else if choice ~= nil then
             print( "INVALID INPUT: " .. choice)
         end
 
@@ -119,7 +119,7 @@ while true
         print( "0 ) Go back" )
         if choice = 0 then
             state = "main"
-        else if choice != nil then
+        else if choice ~= nil then
             print( "INVALID INPUT: " .. choice)
         end
 
@@ -142,7 +142,7 @@ while true
         print( "0 ) Go back" )
         if choice = 0 then
             state = "main"
-        else if choice != nil then
+        else if choice ~= nil then
             print( "INVALID INPUT: " .. choice)
         end
 
