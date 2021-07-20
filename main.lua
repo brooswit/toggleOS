@@ -27,7 +27,7 @@ end
 local state = "main"
 while true do
     local ldVariation = nil
-    if ldClient != nil then
+    if ldClient ~= nil then
         ldVariation = ldClient.variation( config.flagKey )
     end
 
