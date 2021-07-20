@@ -13,6 +13,7 @@ local ldClient = nil
 local function reinit()
     if ldClient ~= nil then
         ldClient.close()
+        ldClient = nil
     end
     ldClient = launchDarkly.init( config.clientSideID, { key = config.userKey } )
 end
@@ -26,7 +27,7 @@ end
 local state = "main"
 while true do
     local ldVariation = nil
-    if isLDSDKConfigured() then
+    if ldClient != nil then
         ldVariation = ldClient.variation( config.flagKey )
     end
 
