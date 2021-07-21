@@ -82,37 +82,14 @@ local function printLDStatus(config)
 end
 
 local stateName = "main"
+local choice = nil
 while true do
     config = cleanConfig(config)
     updateLaunchDarkly()
 
-    local choice = nil
-    local event, key = os.pullEvent( "key_up" )
-    if key == keys.one then choice = 1
-    elseif key == keys.two then
-        choice = 2
-    elseif key == keys.three then
-        choice = 3
-    elseif key == keys.four then
-        choice = 4
-    elseif key == keys.five then
-        choice = 5
-    elseif key == keys.six then
-        choice = 6
-    elseif key == keys.seven then
-        choice = 7
-    elseif key == keys.eight then
-        choice = 8
-    elseif key == keys.nine then
-        choice = 9
-    elseif key == keys.zero then
-        choice = 0
-    end
-
     term.setBackgroundColor(colours.black)  -- Set the background colour to black.
     term.clear()                            -- Paint the entire display with the current background colour.
     term.setCursorPos(1,1)                  -- Move the cursor to the top left position.
-    sleep( 0.05 )
 
 -------------------------------------------------------
     print( "===================================================" )
@@ -211,5 +188,29 @@ while true do
     else
         print( "INVALID STATE: " .. stateName)
         stateName="main"
+    end
+
+    choice = nil
+    local event, key = os.pullEvent( "key_up" )
+    if key == keys.one then
+       choice = 1
+    elseif key == keys.two then
+        choice = 2
+    elseif key == keys.three then
+        choice = 3
+    elseif key == keys.four then
+        choice = 4
+    elseif key == keys.five then
+        choice = 5
+    elseif key == keys.six then
+        choice = 6
+    elseif key == keys.seven then
+        choice = 7
+    elseif key == keys.eight then
+        choice = 8
+    elseif key == keys.nine then
+        choice = 9
+    elseif key == keys.zero then
+        choice = 0
     end
 end
