@@ -2,7 +2,7 @@ os.loadAPI( 'prompt.lua' )
 os.loadAPI( 'configManager.lua' )
 os.loadAPI( 'LDClient.lua' )
 
-local cleanConfig(config)
+local function cleanConfig(config)
     local cleanConfig = {}
 
     local defaultConfig = {
