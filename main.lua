@@ -2,34 +2,89 @@ os.loadAPI( 'prompt.lua' )
 os.loadAPI( 'configManager.lua' )
 os.loadAPI( 'LDClient.lua' )
 
+local cleanConfig(config) {
+    local cleanConfig = {}
+
+    local defaultConfig = {
+        clientSideID = "",
+        apiKey = "",
+        flagKey = "",
+        userKey = ""
+    }
+
+    for configKey, configValue in pairs(defaultConfig) do
+        if config[configKey] ~= nil then
+            cleanConfig[configKey] = config[configKey]
+        else
+            cleanConfig[configKey] = defaultConfig[configKey]
+        end
+    end
+
+    return cleanConfig
+}
+
 local config = configManager.load( "toggleOS" )
--- config.clientSideID = config.clientSideID || prompt( "Enter client-side ID" )
--- config.apiKey       = config.apiKey       || prompt( "Enter API key" )
--- config.flagKey      = config.flagKey      || prompt( "Enter flag key" )
--- config.userKey      = config.userKey      || prompt( "Enter user key" )
+config = cleanConfig(config)
 configManager.save( "toggleOS", config )
 
-local ldClient = nil
-local function reinit()
-    if ldClient ~= nil then
-        ldClient.close()
-        ldClient = nil
+local prevConfig = nil
+
+local state = {
+    ldClient = nil,
+    ldVariation = nil,
+
+    prevClientSideID = nil,
+    prevUserKey = nil,
+}
+
+local function updateLaunchDarkly()
+    state.ldVariation = nil
+    if config.clientSideID ~= state.prevClientSideID then
+        state.prevClientSideID = config.clientSideID
+        if state.ldClient ~= nil then
+            state.ldClient.close()
+            state.ldClient = nil
+        end
+        if config.clientSideID ~= "" then
+            state.ldClient = launchDarkly.init( config.clientSideID, { key = config.userKey } )
+        end
+    else
+        if config.userKey ~= state.prevUserKey then
+            state.prevUserKey = config.userKey
+            if state.ldClient ~= nil then
+                state.ldClient.identify( { key = config.userKey } )
+            end
+        end
     end
-    ldClient = launchDarkly.init( config.clientSideID, { key = config.userKey } )
+    if state.ldClient ~= nil then
+        if state.flagKey ~= "" and state.userKey ~= ""  then
+            state.ldVariation = state.ldClient.variation()
+        end
+    end
 end
 
-local function reidentify()
-    if ldClient ~= nil then
-        ldClient.identify( { key = config.userKey } )
+local function printLDStatus(config)
+    if state.ldClient == nil then
+        print("No Client-Side ID provided")
+    elseif not state.ldClient.isInitialized() then
+        if not state.ldClient.isLDReachable() then
+            print("LaunchDarkly is not reachable")
+        elseif not state.ldClient.isClientSideIDValid() then
+            print("Invalid Client-Side ID")
+        end
+    elseif state.userKey == nil then
+        print("No User key provided")
+    elseif state.flagKey == nil then
+        print("No Flag key provided")
+    else
+        print( "LD Flag " .. config.flagKey .. " is serving " .. state.ldVariation .. " to user " .. config.userKey )
     end
 end
 
 local state = "main"
 while true do
-    local ldVariation = nil
-    if ldClient ~= nil then
-        ldVariation = ldClient.variation( config.flagKey )
-    end
+    config = cleanConfig(config)
+    updateLaunchDarkly()
 
     local choice = nil
     local event, key = os.pullEvent( "key_up" )
@@ -58,10 +113,10 @@ while true do
     term.clear()                            -- Paint the entire display with the current background colour.
     term.setCursorPos(1,1)                  -- Move the cursor to the top left position.
 -------------------------------------------------------
-    print( "---------------------------------------------------" )
-    print( "--              Welcome to ToggleOS              --" )
-    print( "---------------------------------------------------" )
-    print( "Flag ' .. config.flagKey .. ' is serving ' .. ldVariation .. ' to user ' .. config.userKey .. '.")
+    print( "===================================================" )
+    print( "==              Welcome to ToggleOS              ==" )
+    print( "===================================================" )
+    printLDStatus(config)
     print( "---------------------------------------------------" )
     if state == "main" then
         print( "--                  Main Menu                    --" )
