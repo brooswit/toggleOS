@@ -153,7 +153,7 @@ while true do
 
     choice = nil
     if not skipInput then
-        local event, key = os.pullEvent( "key_down" )
+        local event, key = os.pullEvent( "key_up" )
         if key == keys.one then
         choice = 1
         elseif key == keys.two then
@@ -226,6 +226,6 @@ while true do
     else
         stateName="main"
     end
-    
+
     sleep(0)
 end
