@@ -61,7 +61,7 @@ while true do
     print( "---------------------------------------------------" )
     print( "--              Welcome to ToggleOS              --" )
     print( "---------------------------------------------------" )
-    print( "Flag " .. config.flagKey .. " is serving " .. ldVariation .. " to user " .. config.userKey .. ".")
+    print( "Flag ' .. config.flagKey .. ' is serving ' .. ldVariation .. ' to user ' .. config.userKey .. '.")
     print( "---------------------------------------------------" )
     if state == "main" then
         print( "--                  Main Menu                    --" )
