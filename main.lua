@@ -81,7 +81,7 @@ local function printLDStatus(config)
     end
 end
 
-local state = "main"
+local stateName = "main"
 while true do
     config = cleanConfig(config)
     updateLaunchDarkly()
@@ -118,7 +118,7 @@ while true do
     print( "===================================================" )
     printLDStatus(config)
     print( "---------------------------------------------------" )
-    if state == "main" then
+    if stateName == "main" then
         print( "--                  Main Menu                    --" )
         print( "---------------------------------------------------" )
         print( "Choose an option:" )
@@ -126,15 +126,15 @@ while true do
         print( "2 ) Configure Interfaces" )
         print( "---------------------------------------------------" )
         if choice == 1 then
-            state = "config_ld"
+            stateName = "config_ld"
         elseif choice == 2 then
-            state = "config_faces"
+            stateName = "config_faces"
         elseif choice ~= nil then
             print( "INVALID INPUT: " .. choice)
         end
 
 
-    elseif state == "config_ld" then
+    elseif stateName == "config_ld" then
         print( "--             Configure LaunchDarkly            --" )
         print( "---------------------------------------------------" )
         print( "1 ) Change Client-Side ID" )
@@ -158,13 +158,13 @@ while true do
             print("Enter new User key: ")
             state.userKey = read()
         elseif choice == 0 then
-            state = "main"
+            stateName = "main"
         elseif choice ~= nil then
             print( "INVALID INPUT: " .. choice)
         end
 
 
-    elseif state == "config_faces" then
+    elseif stateName == "config_faces" then
         print( "--              Configure Interfaces             --" )
         print( "---------------------------------------------------" )
         print( "1 ) Front   - (STATUS)" )
@@ -177,13 +177,13 @@ while true do
         print( "---------------------------------------------------" )
         print( "0 ) Go back" )
         if choice == 0 then
-            state = "main"
+            stateName = "main"
         elseif choice ~= nil then
             print( "INVALID INPUT: " .. choice)
         end
 
 
-    elseif state == "config_face" then
+    elseif stateName == "config_face" then
         print( "--              Configure Interface              --" )
         print( "---------------------------------------------------" )
         print( "Side (SIDE) is currently configured to (STATUS).")
@@ -200,17 +200,15 @@ while true do
         print( "---------------------------------------------------" )
         print( "0 ) Go back" )
         if choice == 0 then
-            state = "main"
+            stateName = "main"
         elseif choice ~= nil then
             print( "INVALID INPUT: " .. choice)
         end
 
 
     else
-        print( "INVALID STATE: " .. state)
-        state="main"
-
-
+        print( "INVALID STATE: " .. stateName)
+        stateName="main"
     end
     sleep( 0 )
 end
