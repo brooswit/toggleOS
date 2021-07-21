@@ -57,19 +57,19 @@ while true do
     term.setBackgroundColor(colours.black)  -- Set the background colour to black.
     term.clear()                            -- Paint the entire display with the current background colour.
     term.setCursorPos(1,1)                  -- Move the cursor to the top left position.
-
-    print( "--------------------------------------------------------------------------------" )
-    print( "--                            Welcome to ToggleOS                             --" )
-    print( "--------------------------------------------------------------------------------" )
+-------------------------------------------------------
+    print( "-------------------------------------------------------" )
+    print( "--                Welcome to ToggleOS                --" )
+    print( "-------------------------------------------------------" )
     print( "Flag " .. config.flagKey .. " is serving " .. ldVariation .. " to user " .. config.userKey .. ".")
-    print( "--------------------------------------------------------------------------------" )
+    print( "-------------------------------------------------------" )
     if state == "main" then
         print( "--                                 Main Menu                                  --" )
-        print( "--------------------------------------------------------------------------------" )
+        print( "-------------------------------------------------------" )
         print( "Choose an option:" )
         print( "1 ) Configure LaunchDarkly" )
         print( "2 ) Configure Interfaces" )
-        print( "--------------------------------------------------------------------------------" )
+        print( "-------------------------------------------------------" )
         if choice == 1 then
             state = "config_ld"
         elseif choice == 2 then
@@ -80,8 +80,8 @@ while true do
 
 
     elseif state == "config_ld" then
-        print( "--                           Configure LaunchDarkly                           --" )
-        print( "--------------------------------------------------------------------------------" )
+        print( "--               Configure LaunchDarkly              --" )
+        print( "-------------------------------------------------------" )
         print( "1 ) Change client-side ID" )
         print( "2 ) Change API key" )
         print( "3 ) Change flag key" )
@@ -89,7 +89,7 @@ while true do
         print( "5 ) Add, remove, or change user attributes" )
         print( "6 ) Change flag state" )
         print( "7 ) Change flag targeting" )
-        print( "--------------------------------------------------------------------------------" )
+        print( "-------------------------------------------------------" )
         print( "0 ) Go back" )
         if choice == 1 then
             promptFor("client_side_id")
@@ -107,8 +107,8 @@ while true do
 
 
     elseif state == "config_faces" then
-        print( "--                            Configure Interfaces                            --" )
-        print( "--------------------------------------------------------------------------------" )
+        print( "--                Configure Interfaces               --" )
+        print( "-------------------------------------------------------" )
         print( "1 ) Front   - (STATUS)" )
         print( "2 ) Back    - (STATUS)" )
         print( "3 ) Right   - (STATUS)" )
@@ -116,7 +116,7 @@ while true do
         print( "5 ) Top     - (STATUS)" )
         print( "6 ) Buttom  - (STATUS)" )
         print( "7 ) Default - (STATUS)" )
-        print( "--------------------------------------------------------------------------------" )
+        print( "-------------------------------------------------------" )
         print( "0 ) Go back" )
         if choice == 0 then
             state = "main"
@@ -126,10 +126,10 @@ while true do
 
 
     elseif state == "config_face" then
-        print( "--                            Configure Interface                             --" )
-        print( "--------------------------------------------------------------------------------" )
+        print( "--                Configure Interface                --" )
+        print( "-------------------------------------------------------" )
         print( "Side (SIDE) is currently configured to (STATUS).")
-        print( "--------------------------------------------------------------------------------" )
+        print( "-------------------------------------------------------" )
         print( "1 ) Disabled                 (Do nothing)" )
         print( "2 ) Default                  (Use behavior of 'default' face)" )
         print( "3 ) Output - flag variation  (Output redstone signal)" )
@@ -139,7 +139,7 @@ while true do
         print( "7 ) Input  - flag targeting  (Turn flag on/off for user using redstone signal)")
         print( "8 ) Input  - redstone state  (Include redstone signal in user attributes)" )
         print( "9 ) Input  - redstone count  (Include redstone signal in user attributes)" )
-        print( "--------------------------------------------------------------------------------" )
+        print( "-------------------------------------------------------" )
         print( "0 ) Go back" )
         if choice == 0 then
             state = "main"
