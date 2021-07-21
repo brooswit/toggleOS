@@ -137,23 +137,26 @@ while true do
     elseif state == "config_ld" then
         print( "--             Configure LaunchDarkly            --" )
         print( "---------------------------------------------------" )
-        print( "1 ) Change client-side ID" )
+        print( "1 ) Change Client-Side ID" )
         print( "2 ) Change API key" )
-        print( "3 ) Change flag key" )
-        print( "4 ) Change user key" )
+        print( "3 ) Change Flag key" )
+        print( "4 ) Change User key" )
         print( "5 ) Add, remove, or change user attributes" )
         print( "6 ) Change flag state" )
         print( "7 ) Change flag targeting" )
         print( "---------------------------------------------------" )
         print( "0 ) Go back" )
         if choice == 1 then
-            promptFor("client_side_id")
-        elseif choice == 2 then
-            promptFor("api_key")
+            print("Enter new client-side ID: ")
+            state.clientSideID = read()
+        -- elseif choice == 2 then
+            -- promptFor("api_key")
         elseif choice == 3 then
-            promptFor("flag_key")
+            print("Enter new Flag key: ")
+            state.flagKey = read()
         elseif choice == 4 then
-            promptFor("user_key")
+            print("Enter new User key: ")
+            state.userKey = read()
         elseif choice == 0 then
             state = "main"
         elseif choice ~= nil then
