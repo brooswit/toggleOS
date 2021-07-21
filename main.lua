@@ -210,5 +210,5 @@ while true do
         print( "INVALID STATE: " .. stateName)
         stateName="main"
     end
-    sleep( 0 )
+    sleep( 1 )
 end
