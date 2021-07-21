@@ -83,6 +83,7 @@ end
 
 local stateName = "main"
 local choice = nil
+
 while true do
     config = cleanConfig(config)
     updateLaunchDarkly()
@@ -191,7 +192,7 @@ while true do
     end
 
     choice = nil
-    local event, key = os.pullEvent( "key_up" )
+    local event, key = os.pullEvent( "key_down" )
     if key == keys.one then
        choice = 1
     elseif key == keys.two then
