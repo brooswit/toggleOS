@@ -136,7 +136,7 @@ while true do
         print( 'Side (SIDE) is currently configured to (STATUS).')
         print( '---------------------------------------------------' )
         print( '1 ) Disabled                 (Do nothing)' )
-        print( '2 ) Default                  (Use behavior of 'default' face)' )
+        print( '2 ) Default                  (Use behavior of "default" face)' )
         print( '3 ) Output - flag variation  (Output redstone signal)' )
         print( '4 ) Input  - track goal      (Track a specific goal using redstone signal)' )
         print( '5 ) Input  - goal metric     (Track a specific metric using redstone signal)' )
