@@ -112,6 +112,8 @@ while true do
     term.setBackgroundColor(colours.black)  -- Set the background colour to black.
     term.clear()                            -- Paint the entire display with the current background colour.
     term.setCursorPos(1,1)                  -- Move the cursor to the top left position.
+    sleep( 0.05 )
+
 -------------------------------------------------------
     print( "===================================================" )
     print( "==              Welcome to ToggleOS              ==" )
@@ -210,5 +212,4 @@ while true do
         print( "INVALID STATE: " .. stateName)
         stateName="main"
     end
-    sleep( 1 )
 end
