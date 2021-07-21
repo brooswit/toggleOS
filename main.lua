@@ -2,7 +2,7 @@ os.loadAPI( 'prompt.lua' )
 os.loadAPI( 'configManager.lua' )
 os.loadAPI( 'LDClient.lua' )
 
-local cleanConfig(config) {
+local cleanConfig(config)
     local cleanConfig = {}
 
     local defaultConfig = {
@@ -21,7 +21,7 @@ local cleanConfig(config) {
     end
 
     return cleanConfig
-}
+end
 
 local config = configManager.load( "toggleOS" )
 config = cleanConfig(config)
